@@ -1,4 +1,0 @@
-https://www.nextplatform.com/feed/
-https://www.datacenterdynamics.com/en/rss/
-https://www.datacenterknowledge.com/rss.xml
-https://www.rfc-editor.org/rfcrss.xml
