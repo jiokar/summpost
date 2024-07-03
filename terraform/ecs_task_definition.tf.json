@@ -1,0 +1,33 @@
+{
+    "family": "summpost-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "256",
+    "memory": "512",
+    "containerDefinitions": [
+        {
+            "name": "summpost-container",
+            "image": "${aws_account_id}.dkr.ecr.${aws_region}.amazonaws.com/${ecr_repository}:${image_tag}",
+            "essential": true,
+            "environment": [
+                {
+                "name": "OPENAI_API_KEY",
+                "value": "${openai_api_key}"
+                },
+                {
+                "name": "SLACK_WEBHOOK_URL",
+                "value": "${slack_webhook_url}"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-region": "${aws_region}",
+                    "awslogs-group": "/ecs/news-to-slack",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ]
+}
+  
